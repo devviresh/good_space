@@ -44,6 +44,12 @@ class WorkView extends StatelessWidget {
                 name: 'Andrew',
                 role: 'Skill Trainer',
               ),
+              SBW20(),
+              AICard(
+                imagepath: '',
+                name: 'Andrew',
+                role: 'Skill Trainer',
+              ),
             ],
           ),
         ),
@@ -69,139 +75,156 @@ class WorkView extends StatelessWidget {
           ),
         ),
         const SBH20(),
-        Container(
-          decoration: BoxDecoration(
-              border: Border.all(color: AppColors.greyText),
-              borderRadius: BorderRadius.all(AppDimensions.r8)),
-          padding: const EdgeInsets.all(13.0),
-          height: 190,
-          child: Column(children: [
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        const JobCard(),
+        const SBH15(),
+        const JobCard(),
+      ],
+    );
+  }
+}
+
+class JobCard extends StatelessWidget {
+  const JobCard({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+          border: Border.all(color: AppColors.greyText),
+          borderRadius: BorderRadius.all(AppDimensions.r8)),
+      padding: const EdgeInsets.all(13.0),
+      height: 195,
+      child: Column(children: [
+        const Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Textpoppins16W600(
-                      'IOS Developer',
-                      color: AppColors.blackText,
-                    ),
-                    Textpoppins12W400(
-                      'Goodspace',
-                      color: AppColors.greyText,
-                    )
-                  ],
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Icon(Icons.share),
-                    Textpoppins10W400(
-                      '2 Days ago',
-                      color: AppColors.greyText,
-                    )
-                  ],
-                )
-              ],
-            ),
-            const Row(
-              children: [
-                Icon(
-                  Icons.home_outlined,
-                  color: AppColors.greyText,
-                  size: 20.0,
+                Textpoppins16W600(
+                  'IOS Developer',
+                  color: AppColors.blackText,
                 ),
                 Textpoppins12W400(
-                  'Saket, New Delhi',
+                  'Goodspace',
                   color: AppColors.greyText,
                 )
               ],
             ),
-            const SBH5(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  height: 30.0,
-                  decoration: BoxDecoration(
-                      color: AppColors.success.withOpacity(0.3),
-                      border: Border.all(
-                        color: AppColors.success,
-                      ),
-                      borderRadius: BorderRadius.circular(5)),
-                  child: const Center(
-                    child: Textpoppins10W400(
-                      '20-25 LPA',
-                      color: AppColors.success,
-                    ),
-                  ),
+                Icon(
+                  Icons.share,
+                  size: 24,
                 ),
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  height: 30.0,
-                  decoration: BoxDecoration(
-                      color: Colors.blue.withOpacity(0.3),
-                      border: Border.all(
-                        color: Colors.blue,
-                      ),
-                      borderRadius: BorderRadius.circular(5)),
-                  child: const Center(
-                    child: Textpoppins10W400(
-                      '5-7 Years',
-                      color: Colors.blue,
-                    ),
+                Textpoppins10W400(
+                  '2 Days ago',
+                  color: AppColors.greyText,
+                )
+              ],
+            )
+          ],
+        ),
+        const Row(
+          children: [
+            Icon(
+              Icons.home_outlined,
+              color: AppColors.greyText,
+              size: 20.0,
+            ),
+            SBW5(),
+            Textpoppins12W400(
+              'Saket, New Delhi',
+              color: AppColors.greyText,
+            )
+          ],
+        ),
+        const SBH5(),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              height: 30.0,
+              decoration: BoxDecoration(
+                  color: AppColors.success.withOpacity(0.3),
+                  border: Border.all(
+                    color: AppColors.success,
                   ),
+                  borderRadius: BorderRadius.circular(5)),
+              child: const Center(
+                child: Textpoppins10W400(
+                  '20-25 LPA',
+                  color: AppColors.success,
                 ),
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  height: 30.0,
-                  decoration: BoxDecoration(
-                      color: Colors.purple.withOpacity(0.1),
-                      border: Border.all(
-                        color: Colors.purple.withOpacity(0.5),
-                      ),
-                      borderRadius: BorderRadius.circular(5)),
-                  child: Center(
-                    child: Textpoppins10W400(
-                      'Remote',
-                      color: Colors.purple.withOpacity(0.5),
-                    ),
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              height: 30.0,
+              decoration: BoxDecoration(
+                  color: Colors.blue.withOpacity(0.3),
+                  border: Border.all(
+                    color: Colors.blue,
                   ),
+                  borderRadius: BorderRadius.circular(5)),
+              child: const Center(
+                child: Textpoppins10W400(
+                  '5-7 Years',
+                  color: Colors.blue,
+                ),
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              height: 30.0,
+              decoration: BoxDecoration(
+                  color: Colors.purple.withOpacity(0.1),
+                  border: Border.all(
+                    color: Colors.purple.withOpacity(0.5),
+                  ),
+                  borderRadius: BorderRadius.circular(5)),
+              child: Center(
+                child: Textpoppins10W400(
+                  'Remote',
+                  color: Colors.purple.withOpacity(0.5),
+                ),
+              ),
+            ),
+          ],
+        ),
+        const SBH15(),
+        const Row(
+          children: [
+            CircleAvatar(
+              radius: 20,
+            ),
+            SBH20(),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Textpoppins10W400(
+                  'Nikita',
+                  color: AppColors.greyText,
+                ),
+                Textpoppins10W400(
+                  'Tooliqa innovations',
+                  color: AppColors.greyText,
                 ),
               ],
             ),
-            const SBH10(),
-            const Row(
-              children: [
-                CircleAvatar(
-                  radius: 20,
-                ),
-                SBH20(),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Textpoppins10W400(
-                      'Nikita',
-                      color: AppColors.greyText,
-                    ),
-                    Textpoppins10W400(
-                      'Tooliqa innovations',
-                      color: AppColors.greyText,
-                    ),
-                  ],
-                ),
-                SBW15(),
-                Expanded(
-                    child: CustomFilledButton(
-                  text: 'Apply',
-                  height: 40,
-                ))
-              ],
-            )
-          ]),
+            SBW15(),
+            Expanded(
+                child: CustomFilledButton(
+              text: 'Apply',
+              height: 40,
+            ))
+          ],
         )
-      ],
+      ]),
     );
   }
 }
