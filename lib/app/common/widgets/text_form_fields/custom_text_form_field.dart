@@ -37,6 +37,7 @@ class CustomTextFormField extends StatelessWidget {
     this.iconPath,
     this.suffixChild,
     this.height,
+    required this.hasError,
     this.enabled = true,
   }) : super(key: key);
   final TextInputType? keyboardType;
@@ -66,13 +67,15 @@ class CustomTextFormField extends StatelessWidget {
   final String? iconPath;
   final Widget? suffixChild;
   final bool enabled;
+  final bool hasError;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: height ?? 52.h,
       decoration: BoxDecoration(
-        border: Border.all(color: AppColors.lightGrey),
+        border:
+            Border.all(color: hasError ? AppColors.error : AppColors.lightGrey),
         borderRadius: BorderRadius.all(AppDimensions.r8),
         color:
             enabled ? AppColors.fieldBG.withOpacity(0.4) : AppColors.lightGrey,

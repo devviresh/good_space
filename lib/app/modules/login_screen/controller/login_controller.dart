@@ -9,43 +9,53 @@ import '../../../routes/app_routes.dart';
 
 class LoginController extends GetxController {
   TextEditingController mobileController = TextEditingController();
+  RxBool hasError = false.obs;
 
   get _mobile => mobileController.text;
 
   final _countryCode = '+91';
 
-
   /// On login click
   /// Validate inputs before api call
+  bool valid() {
+    if (mobileController.text.isEmpty || mobileController.text.length < 10) {
+      hasError.value = true;
+      return false;
+    }
+    hasError.value = false;
+    return true;
+  }
+
   /// If all things validated then make api call
   Future<void> login() async {
-    // if () {
-    /// Show progress Dialog
-    CustomDialogs.loadingDialog(title: "Sending..");
+    if (valid()) {
+      //   hasError.value = true;
+      // } else {
+      //   hasError.value = false;
 
-    /// API call for login
-    final response = await ApiClient().post(
-      ApiEndPoints.login,
-      data: LoginRequestModel(number: _mobile, countryCode: _countryCode)
-          .toJson(),
-    );
-    print(response);
+      /// Show progress Dialog
+      CustomDialogs.loadingDialog(title: "Sending..");
 
-    response.fold(
-      (l) {
-        /// Close Dialog
-        CustomDialogs.closeDialog();
+      /// API call for login
+      final response = await ApiClient().post(
+        ApiEndPoints.login,
+        data: LoginRequestModel(number: _mobile, countryCode: _countryCode)
+            .toJson(),
+      );
+      print(response);
 
-      },
-      (r) {
-        /// Close Dialog
-        CustomDialogs.closeDialog();
+      response.fold(
+        (l) {
+          /// Close Dialog
+          CustomDialogs.closeDialog();
+        },
+        (r) {
+          /// Close Dialog
+          CustomDialogs.closeDialog();
 
-
-        Get.toNamed(Routes.otpScreen,arguments: _mobile);
-
-      },
-    );
-    // }
+          Get.toNamed(Routes.otpScreen, arguments: _mobile);
+        },
+      );
+    }
   }
 }

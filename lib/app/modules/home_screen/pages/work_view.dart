@@ -68,6 +68,7 @@ class WorkView extends StatelessWidget {
         ),
         const SBH10(),
         const CustomTextFormField(
+          hasError: false,
           hintText: 'Search Jobs',
           prefixIcon: Icon(
             Icons.search,

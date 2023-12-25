@@ -19,6 +19,7 @@ class MobileTextFormField extends StatelessWidget {
     this.onSubmitted,
     this.onEditingComplete,
     this.onSaved,
+    required this.hasError,
   }) : super(key: key);
 
   final String label;
@@ -30,6 +31,7 @@ class MobileTextFormField extends StatelessWidget {
   final ValueChanged<String>? onSubmitted;
   final FormFieldSetter<String>? onSaved;
   final VoidCallback? onEditingComplete;
+  final bool hasError;
 
   @override
   Widget build(BuildContext context) {
@@ -44,6 +46,7 @@ class MobileTextFormField extends StatelessWidget {
       textCapitalization: TextCapitalization.none,
       textInputAction: textInputAction,
       controller: controller,
+      hasError: hasError,
     );
   }
 }

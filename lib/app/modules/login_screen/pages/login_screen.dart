@@ -25,6 +25,7 @@ class LoginScreen extends GetView<LoginController> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Textpoppins18W600(
                       'Find',
@@ -51,14 +52,23 @@ class LoginScreen extends GetView<LoginController> {
                   color: AppColors.greyText,
                 ),
                 const SBH20(),
-                MobileTextFormField(
-                  controller: controller.mobileController,
-                ),
+                Obx(() {
+                  return MobileTextFormField(
+                    hasError: controller.hasError.value,
+                    controller: controller.mobileController,
+                  );
+                }),
                 const SBH10(),
-                const Textpoppins12W400(
-                  'You will receive a 4 digit OTP ',
-                  color: AppColors.greyText,
-                ),
+                Obx(() {
+                  return Textpoppins12W400(
+                    controller.hasError.value
+                        ? 'Enter Correct phone number'
+                        : 'You will receive a 4 digit OTP ',
+                    color: controller.hasError.value
+                        ? AppColors.error
+                        : AppColors.greyText,
+                  );
+                }),
                 const SBH40(),
                 CustomFilledButton(
                   text: 'Get OTP',
